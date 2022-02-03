@@ -91,7 +91,7 @@ router.post("/signin", async (req, res, next) => {
 			 * - Third argument: Options...
 			 */
 
-			const authToken = jwt.sign(user, process.env.TOKEN_SECRET, {
+			const authToken = jwt.sign(user, process.env.SESSION_SECRET, {
 				algorithm: "HS256",
 				expiresIn: "2d",
 			});
