@@ -5,7 +5,10 @@ const filmSchema = new Schema({
     releaseDate : String,
     picture : String,
     description : String,
-    genre : String
+    genre : String,
+    crew : [],
+    cast : [],
+    videos :[]
 })
 
 module.exports = model("film", filmSchema);
