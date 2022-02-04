@@ -3,9 +3,9 @@ require("./../config/dbConfig"); // fetch the db connection
 const FilmModel = require('./../models/Film.model.js');
 const axios = require('axios');
 
-const filmsInfos = require('./simple.json');
+const filmsInfos = require('./test1.json');
 
-for (let i = 3501; i < 3999; i++) {
+for (let i = 0; i < filmsInfos.length; i++) {
     const film = filmsInfos[i];
     axios.get(`https://api.themoviedb.org/3/movie/${film.id}?api_key=f59dd0e5ecfa450f4c799f1c056451a6&language=en-US&append_to_response=credits,videos`)
         .then(response => {
