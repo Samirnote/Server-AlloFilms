@@ -62,3 +62,9 @@ typings/
 
 # for dev purpose
 package-lock.json
+
+# ignore seeds json files
+.json
+
+# ignore DS_STORE
+.DS_Store
