@@ -62,3 +62,7 @@ typings/
 
 # for dev purpose
 package-lock.json
+
+
+# for json files
+simple.json
