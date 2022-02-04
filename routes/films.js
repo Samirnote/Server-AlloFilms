@@ -16,6 +16,22 @@ router.get("/films", (req, res, next) => {
           "there was an error while getting the films list from the database",
           err)})
         
-    });
+});
+
+router.get("/films/:id", async (req, res, next) => {
+  try{
+
+    //console.log("jeusi la", req.params.id)
+    const oneFilm = await FilmModel.findById(req.params.id)
+    //console.log("jeusi le film recherché", oneFilm)
+    res.status(201).json(oneFilm);
+    
+    
+  }catch(err){
+    next(err);
+  }
+      
+  });
+
 
   module.exports = router;
