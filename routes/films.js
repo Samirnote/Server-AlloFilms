@@ -6,10 +6,10 @@ const uploader = require("../config/cloudinary");
 
 router.get("/films", (req, res, next) => {
   
-  const q = !req.query.q ? {} : { name: req.query.q };
+  const expression = new RegExp(req.query.q, "i")
+  const q = !req.query.q ? {} : { name: {$regex: expression} };
 
   console.log(req.query);
-
   FilmModel.find(q)
     //.populate("author")
     .then((dbFilms) => {
