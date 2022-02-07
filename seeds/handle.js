@@ -3,7 +3,7 @@ require("./../config/dbConfig"); // fetch the db connection
 const FilmModel = require("./../models/Film.model.js");
 const axios = require("axios");
 
-const filmsInfos = require("./simple.json");
+const filmsInfos = require("./simple1.json");
 
 let counter = 0;
 

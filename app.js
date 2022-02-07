@@ -24,6 +24,7 @@ app.use(
 
 app.use("/", require("./routes/index"));
 app.use("/api", require("./routes/films"));
+app.use("/api", require("./routes/comment"));
 app.use("/api/auth", require("./routes/auth"));
 
 module.exports = app;

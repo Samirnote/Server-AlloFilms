@@ -14,6 +14,7 @@ router.get("/films", (req, res, next) => {
     //.populate("author")
     .then((dbFilms) => {
       //console.log("all films found in the databases :", dbFilms);
+      console.log("REQ PAYLOAD",req.payload)
       res.status(201).json(dbFilms);
     })
     .catch((err) => {
