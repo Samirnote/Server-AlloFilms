@@ -5,7 +5,7 @@ const filmSchema = new Schema({
     releaseDate: String,
     picture: String,
     description: String,
-    genre: String,
+    genre:[],
     crew: [],
     cast: [],
     videos: []

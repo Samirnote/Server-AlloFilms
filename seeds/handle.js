@@ -3,7 +3,7 @@ require("./../config/dbConfig"); // fetch the db connection
 const FilmModel = require("./../models/Film.model.js");
 const axios = require("axios");
 
-const filmsInfos = require("./simple1.json");
+const filmsInfos = require("./sort");
 
 let counter = 0;
 
@@ -41,7 +41,7 @@ let doRec = async  () => {
         releaseDate: currentFilm.release_date,
         picture: `https://www.themoviedb.org/t/p/w1280${currentFilm.poster_path}`,
         description: currentFilm.overview,
-        genre: currentFilm.genres[0]?.name || "uncategorized",
+        genre: currentFilm.genres,
         crew: currentFilm.credits.crew,
         cast: currentFilm.credits.cast,
         videos: currentFilm.videos.results,
