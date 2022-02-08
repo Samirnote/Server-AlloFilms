@@ -27,8 +27,9 @@ router.post("/films/:id/comments", isAuthenticated, async (req, res, next) => {
 
   try {
     // console.log('TOTO' , req.body )
-    const comments = await CommentModel.create(newComment);
-    res.status(201).json(comments);
+    let comment = await CommentModel.create(newComment);
+    comment = await comment.populate("author");
+    res.status(201).json(comment);
   } catch (er) {
     console.error(er);
   }
@@ -48,7 +49,15 @@ router.patch("/films/:id/comments/:idComment", isAuthenticated, async (req, res,
   }
 })
 
-// router.delete("/films/:id/comments/:idComment")
+
+router.delete("/films/:id/comments/:idComment", isAuthenticated, async (req, res, next) => {
+  try{
+    const deletedComment = await CommentModel.findByIdAndDelete(req.params.idComment);
+    res.status(202).json(deletedComment);
+  } catch (er){
+    next(er)
+  }
+})
 
 
 
