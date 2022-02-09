@@ -8,7 +8,7 @@ router.get("/films", (req, res, next) => {
   
   const expression = new RegExp(req.query.q, "i")
   const q = !req.query.q ? {} : { name: {$regex: expression} };
-  const offset = req.query.offset;   // ramener la valeur du offset a partir du front-end
+  const offset = req.query.offset;   // ramener la valeur du offset a le front-end
   //const maxFilm = req.query.maxFilm;
   // let limit = parseInt(req.query.limit)
   // if(!SUPPORTED_LIMITS.includes(parseInt(req.query.limit))) {
