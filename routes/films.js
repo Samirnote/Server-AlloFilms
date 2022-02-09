@@ -8,9 +8,17 @@ router.get("/films", (req, res, next) => {
   
   const expression = new RegExp(req.query.q, "i")
   const q = !req.query.q ? {} : { name: {$regex: expression} };
+  const offset = req.query.offset;
+  const maxFilm = req.query.maxFilm;
+  // let limit = parseInt(req.query.limit)
+  // if(!SUPPORTED_LIMITS.includes(parseInt(req.query.limit))) {
+  //   limit = 10;
+  // }
 
   console.log(req.query);
-  FilmModel.find(q)
+  FilmModel.find(q, null, {
+    skip: offset, limit : 15 
+  })
     //.populate("author")
     .then((dbFilms) => {
       //console.log("all films found in the databases :", dbFilms);
