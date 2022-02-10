@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const endpoint = process.env.MONGODB_URI || "mongodb://127.0.0.1/";
+const endpoint = process.env.MONGODB_URI || "mongodb://127.0.0.1/Allo-Films";
 
 mongoose
 	.connect(endpoint)

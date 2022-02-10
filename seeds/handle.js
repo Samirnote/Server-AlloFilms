@@ -1,6 +1,6 @@
 require("dotenv").config();
-require("./../config/dbConfig"); // fetch the db connection
-const FilmModel = require("./../models/Film.model.js");
+require("../config/dbConfig"); // fetch the db connection
+const FilmModel = require("../models/Film.model");
 const axios = require("axios");
 
 const filmsInfos = require("./sort");

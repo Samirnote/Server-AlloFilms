@@ -3,7 +3,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const isAuthenticated = require("../middlewares/jwt.middleware");
+const { findByIdAndUpdate } = require("../models/User.model");
 const User = require("../models/User.model");
+const uploader = require("../config/cloudinary")
 const saltRounds = 10;
 
 /**
@@ -114,5 +116,26 @@ router.get("/me", isAuthenticated, (req, res, next) => {
 	// console.log("req payload", req.payload);
 	res.status(200).json(req.payload);
 });
+
+router.patch("/profile/update/:id", isAuthenticated, uploader.single("avatar"), async (req, res, next) =>{
+	try{
+		const newProfile = req.body;
+		//console.log(req.body)
+		///console.log("req filyyyyyy :" , req.file)
+		if (req.file) {newProfile.avatar = req.file.path}
+		const updateProfile= await User.findByIdAndUpdate(req.params.id, newProfile, {new:true});
+
+		const authToken = jwt.sign(updateProfile.toObject(), process.env.SESSION_SECRET, {
+			algorithm: "HS256",
+			expiresIn: "2d",
+		});
+
+		res.status(201).json({authToken, updateProfile});
+
+	}catch{
+		(err)=>{console.log(err)};
+	}
+
+} )
 
 module.exports = router;
