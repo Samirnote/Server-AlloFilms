@@ -79,7 +79,7 @@ router.get("/comments/lastComments", (req, res, next) => {
     .populate("film")
     .populate("author")
     .sort({ date: -1 })
-    .limit(10)
+    .limit(5)
     .then((dbComments) => {
       console.log("REQ PAYLOAD", req.payload);
       res.status(201).json(dbComments);
